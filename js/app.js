@@ -6,7 +6,7 @@
 "leaf", "bicycle", "diamond", "bomb", "leaf", "bomb", "bolt", "bicycle",
 "paper-plane", "cube"];
 
-
+var makeChange = ["This", "is", "a", "change"];
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
