@@ -7,6 +7,8 @@
 "paper-plane", "cube"];
 
 var makeChange = ["This", "is", "a", "change"];
+
+var test = "This is a test";
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
