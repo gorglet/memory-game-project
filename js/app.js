@@ -2,6 +2,10 @@
  * Create a list that holds all of your cards
  */
 
+ var cardList = ["diamond", "paper-plane", "anchor", "bolt", "cube", "anchor",
+"leaf", "bicycle", "diamond", "bomb", "leaf", "bomb", "bolt", "bicycle",
+"paper-plane", "cube"];
+
 
 /*
  * Display the cards on the page
