@@ -1,27 +1,18 @@
-/*
- * Create a list that holds all of your cards
- */
+/* Create a list of all the cards */
+var card = $("card");
 
- var cardList = ["diamond", "paper-plane", "anchor", "bolt", "cube", "anchor",
-"leaf", "bicycle", "diamond", "bomb", "leaf", "bomb", "bolt", "bicycle",
-"paper-plane", "cube"];
+var cardList = ["fa fa-diamond", "fa fa-paper-plane", "fa fa-anchor","fa fa-bolt",
+"fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb",
+"fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane", "fa fa-cube"];
 
-var makeChange = ["This", "is", "a", "change"];
-
-var test = "This is a test";
-
-var andAnother = "Testy two haha";
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+// append deck with double of each card
+for(let i of cardList){
+  $('.deck').append(`<li class="card"><i class="${i}"></i></li>`)
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -29,9 +20,27 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
+
+shuffle(cardList);
+
+
+
+function showCard(){
+  card.toggleClass("open show");
+};
+
+showCard();
+
+
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
+
 
 
 /*
