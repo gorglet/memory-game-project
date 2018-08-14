@@ -23,23 +23,26 @@ function shuffle(array) {
     return array;
 }
 
-shuffle(cardList);
+// new variable to store array of shuffled cards
+var shuffledCards = shuffle(cardList);
 
-
-
+/*
 function showCard(){
   card.toggleClass("open show");
 };
+*/
 
-showCard();
 
+let displayCard = function() {
+  this.classList.toggle('open');
+  this.classList.toggle('show');
+  this.classList.toggle('disabled');
+};
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+for (let i = 0; i < shuffledCards.length; i++) {
+  card = shuffledCards[i];
+  $(card).on('click', displayCard);
+}
 
 
 
