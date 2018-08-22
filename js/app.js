@@ -23,8 +23,10 @@ function shuffle(array) {
     return array;
 }
 
-// new variable to store array of shuffled cards
-var shuffledCards = shuffle(cardList);
+/*
+new variable to store array of shuffled cards
+var shuffledCards = shuffle(cardList
+*/
 
 /*
 function showCard(){
@@ -39,10 +41,18 @@ let displayCard = function() {
   this.classList.toggle('disabled');
 };
 
-for (let i = 0; i < shuffledCards.length; i++) {
-  card = shuffledCards[i];
+let allCards = $(".card"); // Selects every element with class "card"
+for (let i = 0; i < allCards.length; i++) {
+  card = allCards[i];
   $(card).on('click', displayCard);
 }
+
+/*for (let i = 0; i < shuffledCards.length; i++) {
+  card = shuffledCards[i];
+  $(card).on('click', displayCard);
+}*/
+
+/*NOW I NEED TO GET THE GAME TO START WITH SHUFFLEDCARDS*/
 
 
 
