@@ -1,19 +1,14 @@
 /* Create a list of all the cards */
-var card = $("card");
 
 var cardList = $(".card");
 
-/*
-["fa fa-diamond", "fa fa-paper-plane", "fa fa-anchor","fa fa-bolt",
-"fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb",
-"fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane", "fa fa-cube"];
-*/
-
 // append deck with double of each card
 for(let i of cardList){
-  $('.deck').append(`<li class="card"><i class="${i}"></i></li>`)
+  console.log(i);
+  $('deck').append(i)
 }
 
+console.log(cardList);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -43,21 +38,12 @@ for (let i = 0; i < shuffledCards.length; i++) {
 
 
 
-
 /*
-let allCards = $(".card");
-// Selects every element with class "card"
-for (let i = 0; i < allCards.length; i++) {
-  card = allCards[i];
+for (let i = 0; i < shuffledCards.length; i++) {
+  card = shuffledCards[i];
   $(card).on('click', displayCard);
 }
 */
-
-
-/*for (let i = 0; i < shuffledCards.length; i++) {
-  card = shuffledCards[i];
-  $(card).on('click', displayCard);
-}*/
 
 /*NOW I NEED TO GET THE GAME TO START WITH SHUFFLEDCARDS*/
 
