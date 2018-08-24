@@ -1,14 +1,19 @@
-// Create a list of all the cards
-var cardList = ["fa fa-diamond", "fa fa-paper-plane", "fa fa-anchor","fa fa-bolt",
-"fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb",
-"fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane", "fa fa-cube"];
+/*
+ * Create a list that holds all of your cards
+ */
 
-// append deck with double of each card
 
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
+
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -16,25 +21,10 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
+
     return array;
 }
 
-let displayCard = function() {
-  this.classList.toggle('open');
-  this.classList.toggle('show');
-  this.classList.toggle('disabled');
-};
-
-var card = $('.card').children();
-console.log(card);
-
-
-function reset(){
-  const shuffledCards = shuffle(cardList);
-  console.log(shuffledCards);
-}
-
-reset();
 
 /*
  * set up the event listener for a card. If a card is clicked:
