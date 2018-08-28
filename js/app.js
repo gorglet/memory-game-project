@@ -25,13 +25,16 @@ let displayCard = function() {
   this.classList.toggle('disabled');
 };
 
-var card = $('.card').children();
-console.log(card);
 
 
 function reset(){
   const shuffledCards = shuffle(cardList);
-  console.log(shuffledCards);
+  var card = $('.card').children();
+  console.log(card);
+  for (let i = 0; i < shuffledCards.length; i++) {
+    card[i].className = shuffledCards[i];
+  }
+  console.log(card);
 }
 
 reset();
