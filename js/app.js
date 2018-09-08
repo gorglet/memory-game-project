@@ -20,24 +20,58 @@ function shuffle(array) {
 }
 
 
-$(".card").on("click", function(){
+
+//array to store cards that have been matched
+var matchedCards = [];
+
+/*
+function checkMatch(openedCards){
+  if (openedCards.length === 2){
+    if (openedCards[0] === openedCards[1]){
+      console.log("True");
+      matchedCards.push(???);
+      //how can I add these cards though?
+
+      //need to change class so that cards stay flipped...
+      //so need to grab the element and toggle class disabled?
+    }
+  }
+}
+
+checkMatch();
+
+*/
+
+
+function openCards(){
+  //event listener which flips cards when they are clicked
+  $(".card").on("click", function(){
     this.classList.toggle('open');
     this.classList.toggle('show');
     this.classList.toggle('disabled');
-})
+    //store cards in a temporary array
+    openedCards.push($(".card"));
+  })
+}
+
+openCards();
+
+//temporary array in which to store cards which have been clicked, in order to check if there's a match
+var openedCards = [];
+console.log(openedCards);
+
 
 
 function reset(){
+
   //new variable to hold the newly shuffled list of cards
   const shuffledCards = shuffle(cardList);
   //grab the child element of .card so that we only grab the elements inside the 'li' elements
   var card = $('.card').children();
-  console.log(card);
   //for loop to change className of each card to that of shuffledCards
   for (let i = 0; i < shuffledCards.length; i++) {
     card[i].className = shuffledCards[i];
   }
-  console.log(card);
 }
 
 reset();
