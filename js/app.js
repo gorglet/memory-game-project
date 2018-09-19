@@ -26,7 +26,7 @@ var matchedCards = [];
 
 /*
 function checkMatch(openedCards){
-  if (openedCards.length === 2){
+  if (openedCards.leng th === 2){
     if (openedCards[0] === openedCards[1]){
       console.log("True");
       matchedCards.push(???);
@@ -42,23 +42,26 @@ checkMatch();
 
 */
 
+//temporary array in which to store cards which have been clicked, in order to check if there's a match
+var clickedCards = [];
+
 
 function openCards(){
   //event listener which flips cards when they are clicked
-  $(".card").on("click", function(){
-    this.classList.toggle('open');
-    this.classList.toggle('show');
-    this.classList.toggle('disabled');
-    //store cards in a temporary array
-    openedCards.push($(".card"));
-  })
-}
+    $(".card").on("click", function(click){
+       this.classList.toggle('open');
+       this.classList.toggle('show');
+       this.classList.toggle('disabled');
+      //this isn't right - it adds the class of all of the cards to the array.
+      //I want to add the class of each card as it's clicked.
+      clickedCards.push($(this));
+    })
+  }
+
+
+
 
 openCards();
-
-//temporary array in which to store cards which have been clicked, in order to check if there's a match
-var openedCards = [];
-console.log(openedCards);
 
 
 
