@@ -3,8 +3,6 @@ var cardList = ["fa fa-diamond", "fa fa-paper-plane", "fa fa-anchor","fa fa-bolt
 "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb",
 "fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane", "fa fa-cube"];
 
-// append deck with double of each card
-
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -20,44 +18,41 @@ function shuffle(array) {
 }
 
 
-
-//array to store cards that have been matched
-var matchedCards = [];
-
-/*
-function checkMatch(openedCards){
-  if (openedCards.leng th === 2){
-    if (openedCards[0] === openedCards[1]){
-      console.log("True");
-      matchedCards.push(???);
-      //how can I add these cards though?
-
-      //need to change class so that cards stay flipped...
-      //so need to grab the element and toggle class disabled?
-    }
-  }
-}
-
-checkMatch();
-
-*/
-
-//temporary array in which to store cards which have been clicked, in order to check if there's a match
+//temporary array in which to store cards which have been clicked
 var clickedCards = [];
 
 
 function openCards(){
   //event listener which flips cards when they are clicked
     $(".card").on("click", function(click){
+      //add the following classes to the card when clicked
        this.classList.toggle('open');
        this.classList.toggle('show');
        this.classList.toggle('disabled');
-      //this isn't right - it adds the class of all of the cards to the array.
-      //I want to add the class of each card as it's clicked.
+      //add card to clickedCards array when clicked
       clickedCards.push($(this));
     })
   }
 
+
+function checkMatch(array){
+  //check length of array
+  if (array.length === 2){
+    //determines if the 2 cards in the clickedCards array are a match
+    if (array[0].children().className === array[1].children().className){
+      //adds class 'match' to cards
+      $(".open").addClass("match");
+      //empties array after adding class
+      array.length = 0;
+    } else {
+      console.log("nope!");
+    }
+  }
+}
+
+//probably need to put this inside a loop of some sort inside a startgame function, so
+//that it keeps checking for matches
+checkMatch(clickedCards);
 
 
 
