@@ -1,3 +1,4 @@
+
 // Create a list of all the cards
 var cardList = ["fa fa-diamond", "fa fa-paper-plane", "fa fa-anchor","fa fa-bolt",
 "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb",
@@ -21,52 +22,45 @@ function shuffle(array) {
 //temporary array in which to store cards which have been clicked
 var clickedCards = [];
 
-let count = 0;
 
 function openCards(){
   //event listener which flips cards when they are clicked
     $(".card").on("click", function(click){
       //add the following classes to the card when clicked
-      this.classList.add('open','show');
-      //add the card to the temporary array
-      clickedCards.push(this);
-      count = count+1;
-      if(count === 2){
-        //create variables so we can check for a match
-        let match1 = clickedCards[0].children[0].className;
-        let match2 = clickedCards[1].children[0].className;
-        //call the checkMatch function
-        checkMatch(match1, match2);
-      }
+       this.classList.toggle('open');
+       this.classList.toggle('show');
+       this.classList.toggle('disabled');
+      //add card to clickedCards array when clicked
+      clickedCards.push($(this));
     })
   }
 
-function checkMatch(match1,match2){
-  //checks the 2 cards in the temporary clickedCards array to see if they are a match
-  if(match1 === match2){
-    //adds class match to the cards to keep them open
-    $(".open").addClass("match");
-    $(".open").toggleClass("show open");
-    //empty the temporary array and reset count to 0
-    clickedCards = [];
-    count = 0;
-  }
-  else {
-    $(".open").toggleClass("nomatch");
-    //call function closeCard
-    setTimeout(closeCard, 500);
-    clickedCards = [];
-    count = 0;
-  }
-}
 
-function closeCard(){
-    $(".open").toggleClass("nomatch");
-    $(".open").toggleClass("show open");
+/*function checkMatch(array){
+  //check length of array
+  if (array.length === 2){
+    //determines if the 2 cards in the clickedCards array are a match
+    if (array[0].children()[0].className === array[1].children()[1].className){
+      //adds class 'match' to cards
+      array[0].addClass("match");
+      array[1].addClass("match");
+      console.log("Yes!");
+      array = [];
+    } else {
+      console.log("nope!");
+      array = [];
+    }
   }
+}*/
 
-//this is how to make a popup!
-//alert ('Hi');
+
+
+
+
+//probably need to put this inside a loop of some sort inside a startgame function, so
+//that it keeps checking for matches
+//checkMatch(clickedCards);
+
 
 
 openCards();
