@@ -21,7 +21,11 @@ function shuffle(array) {
 //temporary array in which to store cards which have been clicked
 var clickedCards = [];
 
+//array to store all cards that have been matched
+var matchedCards = [];
+
 let count = 0;
+let moves = 0;
 
 function openCards(){
   //event listener which flips cards when they are clicked
@@ -30,13 +34,14 @@ function openCards(){
       this.classList.add('open','show');
       //add the card to the temporary array
       clickedCards.push(this);
-      count = count+1;
+      count = count + 1;
       if(count === 2){
         //create variables so we can check for a match
         let match1 = clickedCards[0].children[0].className;
         let match2 = clickedCards[1].children[0].className;
         //call the checkMatch function
         checkMatch(match1, match2);
+        incrementMoves();
       }
     })
   }
@@ -47,6 +52,7 @@ function checkMatch(match1,match2){
     //adds class match to the cards to keep them open
     $(".open").addClass("match");
     $(".open").toggleClass("show open");
+    matchedCards.push(this);
     //empty the temporary array and reset count to 0
     clickedCards = [];
     count = 0;
@@ -65,16 +71,28 @@ function closeCard(){
     $(".open").toggleClass("show open");
   }
 
-//this is how to make a popup!
-//alert ('Hi');
+
+function incrementMoves(){
+  moves++;
+  const movesText = document.querySelector(".moves");
+  movesText.innerHTML = moves;
+}
 
 
-openCards();
 
+//need to work this out so it works on its own
+function endGame(array){
+  if (array.length === 8){
+    alert("You did it!");
+  }
+}
+
+function timer(){
+
+}
 
 
 function reset(){
-
   //new variable to hold the newly shuffled list of cards
   const shuffledCards = shuffle(cardList);
   //grab the child element of .card so that we only grab the elements inside the 'li' elements
@@ -85,7 +103,9 @@ function reset(){
   }
 }
 
+openCards();
 reset();
+endGame(matchedCards);
 
 /*
  * set up the event listener for a card. If a card is clicked:
