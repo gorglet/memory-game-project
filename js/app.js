@@ -17,34 +17,41 @@ function shuffle(array) {
     return array;
 }
 
-
+//Global variables
 //temporary array in which to store cards which have been clicked
 var clickedCards = [];
-
 //array to store all cards that have been matched
 var matchedCards = [];
-
 let count = 0;
 let moves = 0;
+let time = 0;
+let timerOff = true;
+let timerId;
 
 function openCards(){
-  //event listener which flips cards when they are clicked
-    $(".card").on("click", function(click){
-      //add the following classes to the card when clicked
-      this.classList.add('open','show');
-      //add the card to the temporary array
-      clickedCards.push(this);
-      count = count + 1;
-      if(count === 2){
-        //create variables so we can check for a match
-        let match1 = clickedCards[0].children[0].className;
-        let match2 = clickedCards[1].children[0].className;
-        //call the checkMatch function
-        checkMatch(match1, match2);
-        incrementMoves();
-      }
-    })
-  }
+//event listener which flips cards when they are clicked
+  $(".card").on("click", function(click){
+    //changes the value of timerOff to false
+    if (timerOff){
+      startTimer();
+      timerOff = false;
+    }
+    //add the following classes to the card when clicked
+    this.classList.add('open','show');
+    //add the card to the temporary array
+    clickedCards.push(this);
+    count = count + 1;
+    if(count === 2){
+      //create variables so we can check for a match
+      let match1 = clickedCards[0].children[0].className;
+      let match2 = clickedCards[1].children[0].className;
+      //call the checkMatch function
+      checkMatch(match1, match2);
+      incrementMoves();
+      rateScore();
+    }
+  })
+}
 
 function checkMatch(match1,match2){
   //checks the 2 cards in the temporary clickedCards array to see if they are a match
@@ -66,6 +73,7 @@ function checkMatch(match1,match2){
   }
 }
 
+
 function closeCard(){
     $(".open").toggleClass("nomatch");
     $(".open").toggleClass("show open");
@@ -79,16 +87,65 @@ function incrementMoves(){
 }
 
 
+function rateScore() {
+  if (moves === 12 || moves === 15 || moves === 18 || moves === 20){
+    loseStar();
+  }
+}
+
+
+function loseStar(){
+  const stars = document.querySelectorAll(".stars li");
+  for (star of stars){
+    if (star.style.display !== 'none'){
+      star.style.display = 'none';
+      break;
+    }
+  }
+}
+
+
+function startTimer(){
+  timerId = setInterval(() => {
+    time++;
+    displayTimer();
+  }, 1000);
+}
+
+
+function displayTimer() {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+  if (time < 60){
+    const timer = document.querySelector("#seconds");
+    timer.innerHTML = time;
+  } else if (time === 60){
+    const minutes = document.querySelector("#minutes");
+    minutes.innerHTML++;
+    time = 0;
+    const timer = document.querySelector("#seconds");
+    timer.innerHTML = time;
+    }
+  if (seconds < 10){
+    const timer = document.querySelector("#seconds");
+    $("#seconds").prepend('0');
+  }
+}
+
+
+//need to call this from the end game function so it stops when all cards are matched
+function stopTimer(){
+  clearInterval(timerId);
+}
+
+
+
 
 //need to work this out so it works on its own
 function endGame(array){
   if (array.length === 8){
     alert("You did it!");
   }
-}
-
-function timer(){
-
 }
 
 
