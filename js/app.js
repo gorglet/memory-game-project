@@ -63,8 +63,12 @@ function checkMatch(match1,match2){
     //empty the temporary array and reset count to 0
     clickedCards = [];
     count = 0;
-  }
-  else {
+    //if all cards are matched, call endGame function
+    if (matchedCards.length === 8){
+      stopTimer();
+      setTimeout(endGame, 500);
+    }
+  } else {
     $(".open").toggleClass("nomatch");
     //call function closeCard
     setTimeout(closeCard, 500);
@@ -133,19 +137,15 @@ function displayTimer() {
 }
 
 
-//need to call this from the end game function so it stops when all cards are matched
 function stopTimer(){
   clearInterval(timerId);
 }
 
 
 
-
-//need to work this out so it works on its own
-function endGame(array){
-  if (array.length === 8){
+function endGame(){
+  //this will be a modal when i've finished!
     alert("You did it!");
-  }
 }
 
 
@@ -162,7 +162,6 @@ function reset(){
 
 openCards();
 reset();
-endGame(matchedCards);
 
 /*
  * set up the event listener for a card. If a card is clicked:
