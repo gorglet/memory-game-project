@@ -134,6 +134,7 @@ function displayTimer() {
     const timer = document.querySelector("#seconds");
     $("#seconds").prepend('0');
   }
+  return time;
 }
 
 
@@ -142,10 +143,10 @@ function stopTimer(){
 }
 
 
-
 function endGame(){
-  //this will be a modal when i've finished!
-    alert("You did it!");
+    return moves;
+    return time;
+    showModal();
 }
 
 
@@ -160,8 +161,33 @@ function reset(){
   }
 }
 
+function sendModalStats(){
+  const timeStats = document.querySelector('.modal_time');
+  const clockTime = document.querySelector('.timer').innerHTML;
+  const movesStats = document.querySelector('.modal_moves')
+  timeStats.innerHTML = 'Time taken = $(clockTime)';
+  movesStats.innerHTML = 'Moves made = $(moves)';
+}
+
+function showModal(){
+  const modal = document.querySelector('.modal_background');
+  modal.classList.toggle('hide');
+}
+
+//modal tests
+time = 58;
+displayTimer();
+moves = 15;
+incrementMoves();
+rateScore();
+sendModalStats();
+showModal();
+
+
+
 openCards();
 reset();
+
 
 /*
  * set up the event listener for a card. If a card is clicked:

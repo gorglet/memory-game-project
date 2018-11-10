@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link href="https://fonts.googleapis.com/css?family=Marcellus|Permanent+Marker|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
         </header>
 
         <section class="score-panel">
-          <span class="moves">0</span> moves
+          <span class="moves">0</span>moves
         	<ul class="stars">
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
@@ -84,6 +85,22 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+        <div class="modal_background hide">
+          <div class="modal_body">
+            <div class="modal_text">
+              <h1 class="modal_message">You did it!</h1>
+              <h2 class="modal_title">Game Stats</h2>
+              <div class="modal_stats">
+                <span class="modal_time">Time taken = </span>
+                <span class="modal_moves">Moves made = </span>
+                <span class="modal_stars">Star rating = </span>
+              </div>
+              <div class="modal_buttons">
+                <button class="modal_button", "restart_button">Play again</button>
+                <button class="modal_button", "close_button">Close</button>
+            </div>
+          </div>
+        </div>
     </div>
     <script src="js/app.js"></script>
 </body>
