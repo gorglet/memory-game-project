@@ -22,9 +22,11 @@ function shuffle(array) {
 var clickedCards = [];
 //array to store all cards that have been matched
 var matchedCards = [];
+
 let count = 0;
 let moves = 0;
 let time = 0;
+let starCount = 5;
 let timerOff = true;
 let timerId;
 
@@ -87,11 +89,12 @@ function closeCard(){
 function incrementMoves(){
   moves++;
   const movesText = document.querySelector(".moves");
-  movesText.innerHTML = moves;
+  movesText.innerHTML = (moves + " moves");
+  //$(".modal_moves").html("Moves made = " + moves);
 }
 
 
-function rateScore() {
+function rateScore(){
   if (moves === 12 || moves === 15 || moves === 18 || moves === 20){
     loseStar();
   }
@@ -103,6 +106,8 @@ function loseStar(){
   for (star of stars){
     if (star.style.display !== 'none'){
       star.style.display = 'none';
+      starCount --;
+      return starCount;
       break;
     }
   }
@@ -117,7 +122,7 @@ function startTimer(){
 }
 
 
-function displayTimer() {
+function displayTimer(){
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
   if (time < 60){
@@ -144,13 +149,13 @@ function stopTimer(){
 
 
 function endGame(){
-    return moves;
-    return time;
+    stopTimer();
+    sendModalStats();
     showModal();
 }
 
 
-function reset(){
+function startGame(){
   //new variable to hold the newly shuffled list of cards
   const shuffledCards = shuffle(cardList);
   //grab the child element of .card so that we only grab the elements inside the 'li' elements
@@ -162,11 +167,11 @@ function reset(){
 }
 
 function sendModalStats(){
-  const timeStats = document.querySelector('.modal_time');
   const clockTime = document.querySelector('.timer').innerHTML;
-  const movesStats = document.querySelector('.modal_moves')
-  timeStats.innerHTML = 'Time taken = $(clockTime)';
-  movesStats.innerHTML = 'Moves made = $(moves)';
+  const stars = starCount;
+  $(".modal_time").html("Time taken = " + clockTime);
+  $(".modal_moves").html("Moves made = " + moves);
+  $(".modal_stars").html("Star rating = " + stars + "*");
 }
 
 function showModal(){
@@ -174,28 +179,56 @@ function showModal(){
   modal.classList.toggle('hide');
 }
 
-//modal tests
-time = 58;
-displayTimer();
-moves = 15;
-incrementMoves();
-rateScore();
-sendModalStats();
-showModal();
+function reset(){
+    resetTimer();
+    resetMoves();
+    resetStars();
+    resetCards();
+    startGame();
+}
 
+function resetTimer(){
+  stopTimer();
+  timerOff = true;
+  time = 0;
+  document.querySelector("#minutes").innerHTML = "0";
+  displayTimer();
+}
 
+function resetMoves(){
+  //reset move count to 0
+  moves = 0;
+  //change the html to the move count
+  document.querySelector('.moves').innerHTML = moves + " moves";
+}
+
+function resetStars(){
+  //reset star count to 5
+  starCount = 5;
+  const starList = document.querySelectorAll('.stars li');
+  //get all stars to display again
+  for (star of starList){
+    star.style.display = 'inline';
+  }
+}
+
+function resetCards(){
+  const cards = document.querySelectorAll('.match');
+  for (let card of cards){
+    card.className = 'card';
+  }
+}
+
+document.querySelector('.close_button').addEventListener('click', () => {
+  showModal();
+});
+
+document.querySelector('.restart_button').addEventListener('click', () => {
+  reset();
+  showModal();
+});
+
+document.querySelector('.mini_restart_button').addEventListener('click', reset);
 
 openCards();
-reset();
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+startGame();

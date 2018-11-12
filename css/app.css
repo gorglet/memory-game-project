@@ -17,8 +17,16 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background-image: url(seapattern.jpg); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
+}
+
+.header_and_panel{
+    background-color: #7b8fb5;
+    width: 660px;
+    opacity: 0.9;
+    border: none;
+    border-radius: 10px;
 }
 
 .container {
@@ -29,6 +37,7 @@ body {
 }
 
 h1 {
+    text-align: center;
     font-family: 'Source Sans Pro', sans-serif;;
     font-weight: 300;
 }
@@ -40,7 +49,7 @@ h1 {
 #deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #7abdda 0%, #08bef1 100%);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -54,7 +63,7 @@ h1 {
 #deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+    background: #3b2e49bf;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -67,7 +76,7 @@ h1 {
 
 #deck .card.open {
     transform: rotateY(0);
-    background: #02b3e4;
+    background: #6859ccbf;
     cursor: default;
 }
 
@@ -77,12 +86,12 @@ h1 {
 
 #deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #27d8e4;
     font-size: 33px;
 }
 
 #deck .card.nomatch {
-    background: #9f02cc;
+    background: #ef9e1bf7;
 }
 
 /*
@@ -92,9 +101,10 @@ h1 {
     display: flex;
     justify-content: space-around;
     flex: auto 1 1;
-    width: 345px;
+    width: 660px;
     margin-bottom: 10px;
     font-family: 'Source Sans Pro', sans-serif;
+    font-size: 17px;
 }
 
 .score-panel .stars {
