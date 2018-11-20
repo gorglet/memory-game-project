@@ -74,6 +74,7 @@ function checkMatch(match1,match2){
     $(".open").toggleClass("nomatch");
     //call function closeCard
     setTimeout(closeCard, 500);
+    //empty clickedCards array
     clickedCards = [];
     count = 0;
   }
@@ -81,6 +82,7 @@ function checkMatch(match1,match2){
 
 
 function closeCard(){
+  //change the class of all open cards to show them as closed
     $(".open").toggleClass("nomatch");
     $(".open").toggleClass("show open");
   }
@@ -90,11 +92,11 @@ function incrementMoves(){
   moves++;
   const movesText = document.querySelector(".moves");
   movesText.innerHTML = (moves + " moves");
-  //$(".modal_moves").html("Moves made = " + moves);
 }
 
 
 function rateScore(){
+  //set points at which to call the loseStar function
   if (moves === 12 || moves === 15 || moves === 18 || moves === 20){
     loseStar();
   }
@@ -102,6 +104,7 @@ function rateScore(){
 
 
 function loseStar(){
+  //function to hide one star each time the moves count reaches a number in the rateScore function
   const stars = document.querySelectorAll(".stars li");
   for (star of stars){
     if (star.style.display !== 'none'){
@@ -115,6 +118,7 @@ function loseStar(){
 
 
 function startTimer(){
+  //start and display a timer by calling the displayTimer function
   timerId = setInterval(() => {
     time++;
     displayTimer();
@@ -123,6 +127,7 @@ function startTimer(){
 
 
 function displayTimer(){
+  //function to change the innerHTML so that the time is displayed
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
   if (time < 60){
@@ -135,6 +140,7 @@ function displayTimer(){
     const timer = document.querySelector("#seconds");
     timer.innerHTML = time;
     }
+  //add a '0' when the seconds are under 10, eg. 01,02,03 etc
   if (seconds < 10){
     const timer = document.querySelector("#seconds");
     $("#seconds").prepend('0');
@@ -149,6 +155,7 @@ function stopTimer(){
 
 
 function endGame(){
+  //function to end the timer and call other functions to show it's the end of the game
     stopTimer();
     sendModalStats();
     showModal();
@@ -167,6 +174,7 @@ function startGame(){
 }
 
 function sendModalStats(){
+//sends all the necessary info to the pop-up and changes the html to display the info
   const clockTime = document.querySelector('.timer').innerHTML;
   const stars = starCount;
   $(".modal_time").html("Time taken = " + clockTime);
@@ -175,11 +183,13 @@ function sendModalStats(){
 }
 
 function showModal(){
+  //show the pop-up
   const modal = document.querySelector('.modal_background');
   modal.classList.toggle('hide');
 }
 
 function reset(){
+  //resets the game by calling the below functions to reset everything!
     resetTimer();
     resetMoves();
     resetStars();
@@ -213,21 +223,27 @@ function resetStars(){
 }
 
 function resetCards(){
+  //reset all the cards back to how they were at the start of the game
   const cards = document.querySelectorAll('.match');
   for (let card of cards){
     card.className = 'card';
   }
 }
 
+
+//code to make the close button functional
 document.querySelector('.close_button').addEventListener('click', () => {
+  //calls the showModal function, which toggles the modal between being shown and being hidden
   showModal();
 });
 
+//code to make the restart button functional
 document.querySelector('.restart_button').addEventListener('click', () => {
   reset();
   showModal();
 });
 
+//code to make the mini restart button functional
 document.querySelector('.mini_restart_button').addEventListener('click', reset);
 
 openCards();
