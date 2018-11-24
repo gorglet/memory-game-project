@@ -150,10 +150,10 @@ h1 {
   width: 500px;
   top: 46.5%;
   left: 40%;
-  background: #4f03d6;
+  background: #323a80;
   border-style: solid;
-  border-color: white;
-  border-radius: 25px;
+  border-color: #6859cc;
+  opactiy: 0.97;
 }
 
 .modal_message{
@@ -172,8 +172,12 @@ h1 {
   font-size: 25px;
 }
 
+h2 {
+  color: #0595de;
+}
+
 .modal_text {
-  color: cyan;
+  color: #0ebfbfe8;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
 }
@@ -200,7 +204,3 @@ h1 {
 .hide {
   display: none;
 }
-/*font-family: 'Permanent Marker', cursive;
-font-family: 'Marcellus', serif;
-font-family: 'Source Sans Pro', sans-serif;
-*/

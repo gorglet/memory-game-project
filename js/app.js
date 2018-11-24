@@ -194,6 +194,7 @@ function reset(){
     resetMoves();
     resetStars();
     resetCards();
+    matchedCards = [];
     startGame();
 }
 
