@@ -116,7 +116,7 @@ function loseStar(){
   }
 }
 
-
+//from startClock function on https://matthewcranford.com/memory-game-walkthrough-part-6-the-clock/
 function startTimer(){
   //start and display a timer by calling the displayTimer function
   timerId = setInterval(() => {
@@ -148,7 +148,7 @@ function displayTimer(){
   return time;
 }
 
-
+//funtcion stopTimer from https://matthewcranford.com/memory-game-walkthrough-part-6-the-clock/
 function stopTimer(){
   clearInterval(timerId);
 }
@@ -173,6 +173,7 @@ function startGame(){
   }
 }
 
+//function adapted from writeModalStats function on https://matthewcranford.com/memory-game-walkthrough-part-7-making-a-modal/
 function sendModalStats(){
 //sends all the necessary info to the pop-up and changes the html to display the info
   const clockTime = document.querySelector('.timer').innerHTML;
@@ -182,6 +183,8 @@ function sendModalStats(){
   $(".modal_stars").html("Star rating = " + stars + "*");
 }
 
+
+//function from https://matthewcranford.com/memory-game-walkthrough-part-7-making-a-modal/
 function showModal(){
   //show the pop-up
   const modal = document.querySelector('.modal_background');
@@ -194,10 +197,12 @@ function reset(){
     resetMoves();
     resetStars();
     resetCards();
+    //empty the matchedCards array
     matchedCards = [];
     startGame();
 }
 
+//resetTimer function adapted from https://matthewcranford.com/memory-game-walkthrough-part-8-putting-it-all-together/
 function resetTimer(){
   stopTimer();
   timerOff = true;
@@ -206,6 +211,7 @@ function resetTimer(){
   displayTimer();
 }
 
+//resetMoves function from https://matthewcranford.com/memory-game-walkthrough-part-8-putting-it-all-together/
 function resetMoves(){
   //reset move count to 0
   moves = 0;
@@ -213,6 +219,8 @@ function resetMoves(){
   document.querySelector('.moves').innerHTML = moves + " moves";
 }
 
+
+//resetStars function from https://matthewcranford.com/memory-game-walkthrough-part-8-putting-it-all-together/
 function resetStars(){
   //reset star count to 5
   starCount = 5;
@@ -223,6 +231,7 @@ function resetStars(){
   }
 }
 
+//resetCards function (adapted) from https://matthewcranford.com/memory-game-walkthrough-part-8-putting-it-all-together/
 function resetCards(){
   //reset all the cards back to how they were at the start of the game
   const cards = document.querySelectorAll('.match');
@@ -231,7 +240,7 @@ function resetCards(){
   }
 }
 
-
+//below three handlers from https://matthewcranford.com/memory-game-walkthrough-part-8-putting-it-all-together/
 //code to make the close button functional
 document.querySelector('.close_button').addEventListener('click', () => {
   //calls the showModal function, which toggles the modal between being shown and being hidden
