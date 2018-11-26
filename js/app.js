@@ -1,7 +1,8 @@
 // Create a list of all the cards
 var cardList = ["fa fa-diamond", "fa fa-paper-plane", "fa fa-anchor","fa fa-bolt",
-"fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb",
-"fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane", "fa fa-cube"];
+"fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb",];
+
+var duplicatedCardList = cardList.concat(cardList);
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -164,7 +165,7 @@ function endGame(){
 
 function startGame(){
   //new variable to hold the newly shuffled list of cards
-  const shuffledCards = shuffle(cardList);
+  const shuffledCards = shuffle(duplicatedCardList);
   //grab the child element of .card so that we only grab the elements inside the 'li' elements
   var card = $('.card').children();
   //for loop to change className of each card to that of shuffledCards
