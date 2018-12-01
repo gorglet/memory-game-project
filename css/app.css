@@ -47,7 +47,7 @@ h1 {
  */
 
 #deck {
-    width: 660px;
+    width: 680px;
     min-height: 680px;
     background: linear-gradient(160deg, #7abdda 0%, #08bef1 100%);
     padding: 32px;
@@ -83,13 +83,13 @@ h1 {
 }
 
 #deck .card.show {
-    font-size: 33px;
+    font-size: 50px;
 }
 
 #deck .card.match {
     cursor: default;
     background: #27d8e4;
-    font-size: 33px;
+    font-size: 50px;
 }
 
 #deck .card.nomatch {
@@ -106,7 +106,7 @@ h1 {
     width: 660px;
     margin-bottom: 10px;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 17px;
+    font-size: 25px;
 }
 
 .score-panel .stars {
@@ -171,7 +171,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 h2 {
@@ -181,7 +181,7 @@ h2 {
 .modal_text {
   color: #0ebfbfe8;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .modal_close {
@@ -200,7 +200,7 @@ h2 {
   width: 60px;
   border: none;
   border-radius: 15%;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .hide {
